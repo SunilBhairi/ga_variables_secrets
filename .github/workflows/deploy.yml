@@ -15,9 +15,6 @@ jobs:
       MONGODB_USERNAME : sunilbhairi85_db_user 
       MONGODB_PASSWORD : yfPwNMWcmMfcpxhS
       PORT: 8080
-      
-      
-      
     steps:
       - name: Get Code
         uses: actions/checkout@v3
@@ -33,11 +30,12 @@ jobs:
       - name: Run tests
         run: npm test
       - name: Output information
-        run: echo "..."
+        run: echo "MANGODB_USERNAME:${{env}}"
   deploy:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Output information
         run: |        
-          echo "..."
+          echo "MONGODB_DB_NAME:$MONGODB_DB_NAME"
+          echo "MONGODB_USERNAME:$MONGODB_USERNAME"
